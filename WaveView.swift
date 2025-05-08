@@ -1,0 +1,153 @@
+//
+//  WaveView.swift
+//  Chiron
+//
+//  Created by ak on 2/8/25.
+//
+
+import SwiftUI
+import PencilKit
+
+struct Wave: Shape {
+    // allow SwiftUI to animate the wave phase
+    var animatableData: Double {
+        get { phase }
+        set { self.phase = newValue }
+    }
+    
+    // how high our waves should be
+    var strength: Double
+    
+    // how frequent our waves should be
+    var frequency: Double
+    
+    // how much to offset our waves horizontally
+    var phase: Double
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath()
+        
+        // calculate some important values up front
+        let width = Double(rect.width)
+        let height = Double(rect.height)
+        let midWidth = width / 2
+        let midHeight = height / 2
+        let oneOverMidWidth = 1 / midWidth
+        
+        // split our total width up based on the frequency
+        let wavelength = width / frequency
+        
+        // start at the left center
+        //path.move(to: CGPoint(x: 0, y: midHeight))
+        
+        let graphWidth: CGFloat = 1  // Graph is 80% of the width of the view
+        let amplitude: CGFloat = 0.25
+        
+        let origin = CGPoint(x: width * (1 - graphWidth) / 2, y: height * 0.50)
+        
+        
+        path.move(to: origin)
+        
+        for angle in stride(from: 5.0, through: 360*frequency, by: 5.0) {
+            let x = origin.x + CGFloat(angle/360.0) * wavelength
+            let y = origin.y - CGFloat(sin(angle/180.0 * Double.pi)) * height * amplitude
+            path.addLine(to: CGPoint(x: x, y: y))
+        }
+        
+        
+        
+        return Path(path.cgPath)
+    }
+}
+
+struct WaveView: View {
+    @State private var phase = 0.0
+    private var canvasView = PKCanvasView()
+    @State private var test_result: String = ""
+    @State private var path = NavigationPath()
+    
+    struct Resp: Decodable, CustomStringConvertible {
+        let result: String
+        //let name: String
+        
+        
+        var description: String {
+            return "Resp: { result: \(result) }"
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            Spacer(minLength: 30)
+            ExtractView(fieldText: "Click for Instructions",fieldInfo: "Trace the wave and hit submit to complete\n the test!")
+            ZStack() {
+                Wave(strength: 50, frequency: 3, phase: self.phase)
+                    .stroke(Color.pink, lineWidth: 10)
+                    .opacity(0.5)
+                
+                
+                MyCanvas(canvasView: canvasView)
+                Text(test_result)
+            }
+            
+            VStack(){
+                HStack{
+                    Button(action: clear
+                    ) {
+                        Image(systemName: "pencil")
+                            .foregroundColor(.black)
+                        Text("Redraw")
+                            .padding(.horizontal)
+                            .font(.headline)
+                            .foregroundColor(.black)
+                    }.padding().background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.pink, lineWidth: 1)
+                    ).padding()
+                    
+                    Button(action: saveImage
+                    ) {
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(.black)
+                        Text("Save")
+                            .padding(.horizontal)
+                            .font(.headline)
+                            .foregroundColor(.black)
+                    }.padding().background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.pink, lineWidth: 1)
+                    ).padding()
+                }
+                NavigationLink("Submit") {
+                    WaveResultView(path: $path,canvasView: canvasView)
+                }.navigationTitle("Wave Test").font(.headline).padding().background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.pink, lineWidth: 1)
+                ).padding().foregroundColor(.black)
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    func saveImage() {
+        let image = canvasView.drawing.image(from: canvasView.drawing.bounds, scale: 1.0)
+        UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+    }
+    
+    
+    func clear() {
+        canvasView.drawing = PKDrawing()
+        test_result=""
+    }
+}
+
+struct WaveView_Previews: PreviewProvider {
+    static var previews: some View {
+        WaveView()
+    }
+}
+
+

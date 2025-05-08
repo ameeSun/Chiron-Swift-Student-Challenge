@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "spiral",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/buh/Spiral.git",
+      "state" : {
+        "revision" : "c529d2e71152edf6890f5f508689de17936d6e96",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}
