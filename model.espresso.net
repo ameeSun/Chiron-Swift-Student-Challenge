@@ -1,0 +1,326 @@
+{
+  "storage" : "model.espresso.weights",
+  "analyses" : {
+
+  },
+  "properties" : {
+
+  },
+  "format_version" : 200,
+  "metadata_in_weights" : [
+
+  ],
+  "layers" : [
+    {
+      "axis_h" : 2,
+      "axis_w" : 1,
+      "bottom" : "input_1",
+      "axis_k" : 0,
+      "axis_n" : 3,
+      "axis_seq" : 4,
+      "weights" : {
+
+      },
+      "debug_info" : "transpose_15",
+      "top" : "transpose_15",
+      "type" : "transpose",
+      "name" : "transpose_15"
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "sequential\/conv1\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "sequential\/conv1\/Relu",
+      "blob_weights" : 3,
+      "K" : 1,
+      "blob_biases" : 1,
+      "name" : "sequential\/conv1\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 128,
+      "bottom" : "transpose_15",
+      "weights" : {
+
+      },
+      "Nx" : 5,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 5,
+      "n_parallel" : 1
+    },
+    {
+      "pad_r" : 0,
+      "debug_info" : "max_pool_0",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "size_x" : 9,
+      "top" : "max_pool_0",
+      "top_shape_style" : 0,
+      "stride_x" : 3,
+      "avg_or_max" : 1,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "max_pool_0",
+      "pad_t" : 0,
+      "stride_y" : 3,
+      "bottom" : "sequential\/conv1\/Relu",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 9,
+      "pad_value" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "sequential\/conv2\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "sequential\/conv2\/Relu",
+      "blob_weights" : 7,
+      "K" : 128,
+      "blob_biases" : 5,
+      "name" : "sequential\/conv2\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 64,
+      "bottom" : "max_pool_0",
+      "weights" : {
+
+      },
+      "Nx" : 5,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 5,
+      "n_parallel" : 1
+    },
+    {
+      "pad_r" : 0,
+      "debug_info" : "max_pool_1",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "size_x" : 7,
+      "top" : "max_pool_1",
+      "top_shape_style" : 0,
+      "stride_x" : 3,
+      "avg_or_max" : 1,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "max_pool_1",
+      "pad_t" : 0,
+      "stride_y" : 3,
+      "bottom" : "sequential\/conv2\/Relu",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 7,
+      "pad_value" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "sequential\/conv3\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "sequential\/conv3\/Relu",
+      "blob_weights" : 11,
+      "K" : 64,
+      "blob_biases" : 9,
+      "name" : "sequential\/conv3\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "max_pool_1",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "pad_r" : 0,
+      "debug_info" : "max_pool_2",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "size_x" : 5,
+      "top" : "max_pool_2",
+      "top_shape_style" : 0,
+      "stride_x" : 2,
+      "avg_or_max" : 1,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "max_pool_2",
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "bottom" : "sequential\/conv3\/Relu",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 5,
+      "pad_value" : 0
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 1,
+      "fused_tanh" : 0,
+      "debug_info" : "sequential\/conv4\/BiasAdd",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "sequential\/conv4\/Relu",
+      "blob_weights" : 15,
+      "K" : 32,
+      "blob_biases" : 13,
+      "name" : "sequential\/conv4\/BiasAdd",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 1,
+      "C" : 32,
+      "bottom" : "max_pool_2",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 1,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "pad_r" : 0,
+      "debug_info" : "max_pool_3",
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "size_x" : 3,
+      "top" : "max_pool_3",
+      "top_shape_style" : 0,
+      "stride_x" : 2,
+      "avg_or_max" : 1,
+      "average_count_exclude_padding" : 1,
+      "type" : "pool",
+      "name" : "max_pool_3",
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "bottom" : "sequential\/conv4\/Relu",
+      "weights" : {
+
+      },
+      "pad_mode" : 2,
+      "size_y" : 3,
+      "pad_value" : 0
+    },
+    {
+      "axis_h" : 0,
+      "axis_w" : 2,
+      "bottom" : "max_pool_3",
+      "axis_k" : 1,
+      "axis_n" : 3,
+      "axis_seq" : 4,
+      "weights" : {
+
+      },
+      "debug_info" : "transpose_14",
+      "top" : "transpose_14",
+      "type" : "transpose",
+      "name" : "transpose_14"
+    },
+    {
+      "name" : "sequential\/flatten\/Reshape",
+      "weights" : {
+
+      },
+      "dst_w" : 32,
+      "version" : 1,
+      "dst_n" : 1,
+      "dst_nd_rank" : 2,
+      "type" : "reshape",
+      "dst_h" : -1,
+      "mode" : 0,
+      "dynamic_shape" : false,
+      "bottom" : "transpose_14",
+      "debug_info" : "sequential\/flatten\/Reshape",
+      "dst_seq" : 1,
+      "dst_k" : 1,
+      "top" : "sequential\/flatten\/Reshape"
+    },
+    {
+      "nB" : 32,
+      "top" : "sequential\/fc1\/Relu",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 64,
+      "blob_weights" : 19,
+      "type" : "inner_product",
+      "has_relu" : 1,
+      "bottom" : "sequential\/flatten\/Reshape",
+      "blob_biases" : 17,
+      "has_tanh" : 0,
+      "debug_info" : "sequential\/fc1\/BiasAdd",
+      "name" : "sequential\/fc1\/BiasAdd",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 64,
+      "top" : "sequential\/fc3\/BiasAdd",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 2,
+      "blob_weights" : 23,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "sequential\/fc1\/Relu",
+      "blob_biases" : 21,
+      "has_tanh" : 0,
+      "debug_info" : "sequential\/fc3\/BiasAdd",
+      "name" : "sequential\/fc3\/BiasAdd",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "sequential\/fc3\/BiasAdd",
+      "weights" : {
+
+      },
+      "nd_axis" : -1,
+      "debug_info" : "sequential\/fc3\/Softmax",
+      "top" : "Identity",
+      "type" : "softmax_nd",
+      "name" : "sequential\/fc3\/Softmax",
+      "attributes" : {
+        "is_output" : 1
+      }
+    }
+  ]
+}

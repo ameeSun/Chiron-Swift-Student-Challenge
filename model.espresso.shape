@@ -1,0 +1,109 @@
+{
+  "layer_shapes" : {
+    "transpose_14" : {
+      "k" : 1,
+      "w" : 32,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 1
+    },
+    "transpose_15" : {
+      "k" : 1,
+      "w" : 128,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 128
+    },
+    "sequential\/conv2\/Relu" : {
+      "k" : 64,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "max_pool_1" : {
+      "k" : 64,
+      "w" : 12,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 12
+    },
+    "max_pool_3" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 1
+    },
+    "input_1" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 128
+    },
+    "sequential\/fc3\/BiasAdd" : {
+      "k" : 1,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "sequential\/conv4\/Relu" : {
+      "k" : 32,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 4
+    },
+    "sequential\/conv1\/Relu" : {
+      "k" : 128,
+      "w" : 128,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 128
+    },
+    "max_pool_0" : {
+      "k" : 128,
+      "w" : 40,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 40
+    },
+    "sequential\/fc1\/Relu" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "max_pool_2" : {
+      "k" : 32,
+      "w" : 4,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 4
+    },
+    "sequential\/conv3\/Relu" : {
+      "k" : 32,
+      "w" : 12,
+      "n" : 1,
+      "_rank" : 4,
+      "h" : 12
+    },
+    "sequential\/flatten\/Reshape" : {
+      "k" : 1,
+      "w" : 32,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "Identity" : {
+      "k" : 1,
+      "w" : 2,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    }
+  }
+}
